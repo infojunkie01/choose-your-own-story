@@ -16,11 +16,21 @@ export default function App() {
     // look in children of place, find where triger mattches
         for (const child of place.children){
           if (child.trigger == trigger){
+            playSound(child.sound)
             console.log("place", place.children[place.children.indexOf(child)])
             setPlace(place.children[place.children.indexOf(child)]) //set to index
             return child.text
           }
         }
+    }
+
+
+  function playSound(sound) {
+   
+        var snd = new Audio(sound);
+        console.log(snd)
+        snd.play();
+  
     }
 
   const sentences = [
@@ -37,11 +47,15 @@ export default function App() {
         <header className="">
         </header>
         <main>
-          <h1>When will you wake up?</h1>
+          
           <div id="text-container">
+          <h1>When will you wake up?</h1>
             {sentencesArray.map( (sentence, index) => 
               
               <p  data={sentence}>
+                     <audio autoplay>
+                      <source src={place.sound} />
+                    </audio>
               {sentence.split(" ").map(word => {
                 // console.log(sentencesArray, "Array")
                 // console.log(sentence, "sentence")
@@ -81,9 +95,7 @@ export default function App() {
             <img src={place.image}/>
           </div>
           <div>
-            <audio controls loop autoplay>
-              <source src={place.sound} />
-            </audio>
+       
           </div>
 
 
