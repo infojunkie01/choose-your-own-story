@@ -1,6 +1,11 @@
 html *{
   font-family: 'Courier New', Courier, monospace;
 }
+
+body{
+  background-color: #fbe8fd;
+}
+
 main {
   max-width: 700px;
   width: 100%;

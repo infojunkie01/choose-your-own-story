@@ -1,23 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import './App.css';
 import { data } from "./data"
-import Sentence from './components/Elements/Sentence';
+import Sound from './components/Sound';
 
 
 export default function App() {
 
   const [place, setPlace] = useState(data[0])
 
+
+  function startStory(sound) {
+    console.log("place", sound)
+    playSound(sound)
+    //setSoundPlaying(new Audio(sound)) 
+    // soundPlaying.play();
+    console.log("soundPlaying", soundPlaying)
+    const intro = document.getElementById('intro');
+     const story = document.getElementById('story');
+    intro.hidden = true;
+    story.hidden = false;
+  }
+
+
+  // useEffect(() => {
+       
+  //   return () => {
+  //     soundPlaying.play();
+  //      // playingAudio.pause();
+  //   };
+  //   }, []);
+
+
   function showNext(trigger) {
-   
+  
     console.log(trigger, place)
-    
+   
     // look in children of place, find where triger mattches
         for (const child of place.children){
+        
           if (child.trigger == trigger){
             playSound(child.sound)
-            console.log("place", place.children[place.children.indexOf(child)])
+            //setSoundPlaying(new Audio(child.sound))
+            //soundPlaying.play();
+            //console.log("soundPlaying", soundPlaying)
+            //console.log("place", place.children[place.children.indexOf(child)])
             setPlace(place.children[place.children.indexOf(child)]) //set to index
             return child.text
           }
@@ -25,12 +52,13 @@ export default function App() {
     }
 
 
+  const [soundPlaying, setSoundPlaying] = useState(null)
+
   function playSound(sound) {
-   
-        var snd = new Audio(sound);
-        console.log(snd)
-        snd.play();
-  
+    //setSoundPlaying(sound)
+    var snd = new Audio(sound);
+    console.log(sound, "snd")
+    snd.play();
     }
 
   const sentences = [
@@ -47,15 +75,24 @@ export default function App() {
         <header className="">
         </header>
         <main>
+        <h1>When will you wake up?</h1>
           
+        <div id="intro">
+          <p>Do you wake on the first alarm or hit 'snooze' to sleep in?</p>
+         
+          <br/>
+          <p>Click the buttons to see how the morning unfolds.</p>
+          <button id="start" onClick={() => {startStory(place.sound);}}>Begin</button>
+
+        </div>
+
+        <div id="story" hidden>
           <div id="text-container">
-          <h1>When will you wake up?</h1>
+        
             {sentencesArray.map( (sentence, index) => 
               
               <p  data={sentence}>
-                     <audio autoplay>
-                      <source src={place.sound} />
-                    </audio>
+                   
               {sentence.split(" ").map(word => {
                 // console.log(sentencesArray, "Array")
                 // console.log(sentence, "sentence")
@@ -94,7 +131,10 @@ export default function App() {
           <div id="illustration">
             <img src={place.image}/>
           </div>
-          <div>
+          <audio 
+            src = {soundPlaying}
+          />
+     
        
           </div>
 
