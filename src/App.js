@@ -7,6 +7,13 @@ import { data } from "./data"
 
 export default function App() {
 
+  const sentences = [
+    data[0].text
+  ]
+
+  const [sentence, setSentence] = useState('');
+  const [sentencesArray, setSentencesArray] = useState(sentences);
+
   const [place, setPlace] = useState(data[0])
 
   const audioElement = useRef(null)
@@ -14,23 +21,13 @@ export default function App() {
   function startStory(sound) {
     console.log("place", sound)
     playSound(sound)
-    //setSoundPlaying(new Audio(sound)) 
-    // soundPlaying.play();
     console.log("soundPlaying", soundPlaying)
     const intro = document.getElementById('intro');
-     const story = document.getElementById('story');
+    const story = document.getElementById('story');
     intro.hidden = true;
     story.hidden = false;
+    
   }
-
-
-  // useEffect(() => {
-       
-  //   return () => {
-  //     soundPlaying.play();
-  //      // playingAudio.pause();
-  //   };
-  //   }, []);
 
 
   function showNext(trigger) {
@@ -42,42 +39,54 @@ export default function App() {
         
           if (child.trigger == trigger){
             playSound(child.sound)
-            //setSoundPlaying(new Audio(child.sound))
-            //soundPlaying.play();
-            //console.log("soundPlaying", soundPlaying)
+            console.log(place, "PLACE")
             //console.log("place", place.children[place.children.indexOf(child)])
-            setPlace(place.children[place.children.indexOf(child)]) //set to index
-            return child.text
+            var newPlace = place.children[place.children.indexOf(child)]
+            setPlace(newPlace) //set to index
+            console.log("howdy", newPlace)
+            if (newPlace.hasOwnProperty("children") == false){
+
+              console.log("hi")
+              const restart = document.getElementById('restart-button');
+              restart.hidden = false;
+              return child.text
+            }else{
+              return child.text
+            }
+
+            
+            
           }
         }
     }
 
+  function restart(){
+    const restart = document.getElementById('restart-button');
+    restart.hidden = true;
+    setPlace(data[0])
+    setSentence('')
+    setSentencesArray(sentences)
+    const intro = document.getElementById('intro');
+    const story = document.getElementById('story');
+    intro.hidden = false;
+    story.hidden = true;
+    audioRef.current.pause();
+    audioElement = null
+  }
 
   const [soundPlaying, setSoundPlaying] = useState(null)
   const audioRef = useRef(null)
 
   function playSound(sound) {
-    //setSoundPlaying(sound)
-    // var snd = new Audio(sound);
-    console.log(sound, "snd")
-    // snd.play();
-console.log(audioRef, "audioRef")
     audioRef.current.pause() //stop whatever's playing
-    audioRef.current.src = sound //set whatever sound you want to the src
+    audioRef.current.src = sound //set new source
     audioRef.current.load()
     audioRef.current.play()
     }
 
-  const sentences = [
-    data[0].text
-  ]
-
-  const [sentence, setSentence] = useState('');
-  const [sentencesArray, setSentencesArray] = useState(sentences);
 
 
   return (
-
       <div className="App">
         <header className="">
         </header>
@@ -99,7 +108,7 @@ console.log(audioRef, "audioRef")
             {sentencesArray.map( (sentence, index) => 
               
               <p  data={sentence}>
-                   
+
               {sentence.split(" ").map(word => {
                 // console.log(sentencesArray, "Array")
                 // console.log(sentence, "sentence")
@@ -113,7 +122,7 @@ console.log(audioRef, "audioRef")
                               ...sentencesArray,
                               showNext(word)
                             ]);
-                        }}
+                          }}
                       >
                       {word}
                       </button>
@@ -132,6 +141,7 @@ console.log(audioRef, "audioRef")
                  })}
               </p>
         
+             
 
             )} 
           </div>
@@ -142,7 +152,8 @@ console.log(audioRef, "audioRef")
             ref={audioRef}
             src = {soundPlaying}
           />
-     
+        <button id="restart-button" onClick={restart} hidden>Restart</button>
+                 
        
           </div>
 
