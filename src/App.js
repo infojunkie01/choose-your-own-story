@@ -2,13 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import './App.css';
 import { data } from "./data"
-import Sound from './components/Sound';
+//import Sound from './components/Sound';
 
 
 export default function App() {
 
   const [place, setPlace] = useState(data[0])
 
+  const audioElement = useRef(null)
 
   function startStory(sound) {
     console.log("place", sound)
@@ -53,12 +54,18 @@ export default function App() {
 
 
   const [soundPlaying, setSoundPlaying] = useState(null)
+  const audioRef = useRef(null)
 
   function playSound(sound) {
     //setSoundPlaying(sound)
-    var snd = new Audio(sound);
+    // var snd = new Audio(sound);
     console.log(sound, "snd")
-    snd.play();
+    // snd.play();
+console.log(audioRef, "audioRef")
+    audioRef.current.pause() //stop whatever's playing
+    audioRef.current.src = sound //set whatever sound you want to the src
+    audioRef.current.load()
+    audioRef.current.play()
     }
 
   const sentences = [
@@ -132,6 +139,7 @@ export default function App() {
             <img src={place.image}/>
           </div>
           <audio 
+            ref={audioRef}
             src = {soundPlaying}
           />
      

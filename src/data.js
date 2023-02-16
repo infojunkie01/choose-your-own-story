@@ -3,7 +3,7 @@ export const data = [
         layer: 0,
         text: `{You} wake to {the} alarm beeping.`,
         image: './images/alarm.gif',
-        sound:  './audio/snooze.mp3',
+        sound:  './audio/alarm.mp3',
         children: [
             {
                 layer: 1,
@@ -16,7 +16,7 @@ export const data = [
                 trigger: 'the',
                 text: 'The snooze button offers {ten} {more} minutes of sleeping.',
                 image: './images/snooze1.gif',
-                sound:  './audio/bird.mp3',
+                sound:  './audio/snooze.mp3',
                 children: [
                     {
                         layer: 2,
