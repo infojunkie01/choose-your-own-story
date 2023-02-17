@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import './App.css';
 import { data } from "./data"
-//import Sound from './components/Sound';
 
 
 export default function App() {
@@ -145,12 +144,9 @@ export default function App() {
           </div>
 
           <audio 
-       
             ref={audioRef}
             src = {soundPlaying}
-          />
-
-          
+          />  
                  
         </div>
 
