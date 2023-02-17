@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/when-will-you-wake-up/static/css/main.5c6c5e85.css",
-    "main.js": "/when-will-you-wake-up/static/js/main.927816e1.js",
+    "main.js": "/when-will-you-wake-up/static/js/main.0c1ea898.js",
     "static/js/787.28cb0dcd.chunk.js": "/when-will-you-wake-up/static/js/787.28cb0dcd.chunk.js",
     "index.html": "/when-will-you-wake-up/index.html",
     "main.5c6c5e85.css.map": "/when-will-you-wake-up/static/css/main.5c6c5e85.css.map",
-    "main.927816e1.js.map": "/when-will-you-wake-up/static/js/main.927816e1.js.map",
+    "main.0c1ea898.js.map": "/when-will-you-wake-up/static/js/main.0c1ea898.js.map",
     "787.28cb0dcd.chunk.js.map": "/when-will-you-wake-up/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5c6c5e85.css",
-    "static/js/main.927816e1.js"
+    "static/js/main.0c1ea898.js"
   ]
 }
