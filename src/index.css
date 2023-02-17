@@ -26,11 +26,13 @@ code {
 }
 
 
-#story button{
+#story p button{
+  color: black;
   background-color: #f4f4f4;
   border: 1px solid #797979;
   border-radius: 3px;
   padding: 2px 6px;
+  margin: 0 1px 0 1px;
 }
 
 #start-button{
@@ -129,6 +131,6 @@ button{
 @media (max-width: 500px)  { 
     h1{
       font-size: 1.5em;
-    
+      margin-top: 0;
     }
 }
