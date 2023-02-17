@@ -124,17 +124,17 @@ main {
 } */
 
 
-@media (max-width: 600px) and (max-height: 600px) { 
+@media (max-width: 600px) and (max-height: 700px) { 
   h1{
     font-size: 1.5em;
     margin-top: 0;
   }
   #intro-illustration, #illustration img{
-    margin-bottom: -25%; 
+    margin-bottom: -27%; 
     min-width: 1000px;
   }
 }
-@media (min-width: 600px) and (max-width: 800px) and (min-height: 600px ) and (max-height: 800px) { 
+@media (min-width: 600px) and (max-width: 800px) and (min-height: 700px ) and (max-height: 800px) { 
   #intro-illustration, #illustration img{
     margin-bottom: -27%;
     min-width: 1300px;
