@@ -37,14 +37,14 @@ export default function App() {
     // look in children of place, find where triger mattches
         for (const child of place.children){
         
-          if (child.trigger == trigger){
+          if (child.trigger === trigger){
             playSound(child.sound)
             console.log(place, "PLACE")
             //console.log("place", place.children[place.children.indexOf(child)])
             var newPlace = place.children[place.children.indexOf(child)]
             setPlace(newPlace) //set to index
             console.log("howdy", newPlace)
-            if (newPlace.hasOwnProperty("children") == false){
+            if (newPlace.hasOwnProperty("children") === false){
 
               console.log("hi")
               const restart = document.getElementById('restart-button');
@@ -110,7 +110,7 @@ export default function App() {
                 {sentence.split(" ").map(word => {
                   if (word.startsWith('{')){
                     word = word.substring(1, word.length-1);
-                    if (index == (sentencesArray.length-1) ){
+                    if (index === (sentencesArray.length-1) ){
                       return(
                         <button value={word} 
                             onClick={() => {
