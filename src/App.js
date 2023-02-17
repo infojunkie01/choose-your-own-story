@@ -87,82 +87,76 @@ export default function App() {
 
 
   return (
-      <div className="App">
-        <header className="">
-        </header>
-        <main>
-        <h1>When will you wake up?</h1>
-          
-        <div id="intro">
-          <p>Do you wake on the first alarm or hit 'snooze' to sleep in?</p>
-         
-          <br/>
-          <p>Click the buttons to see how the morning unfolds.</p>
-          <button id="start" onClick={() => {startStory(place.sound);}}>Begin</button>
+    <div className="App">
 
+      <header className=""></header>
+
+      <main>
+        <h1>When will you wake up?</h1>
+
+        <div id="intro">
+          <img id="intro-illustration" src="./images/intro.png"/>
+          <p>Do you wake on the first alarm or hit 'snooze' to sleep in?</p>
+          <p>Click the buttons to see how the morning unfolds.</p>
+          <br/>
+          <button id="start-button" onClick={() => {startStory(place.sound);}}>Begin</button>
+          
         </div>
 
         <div id="story" hidden>
           <div id="text-container">
-        
             {sentencesArray.map( (sentence, index) => 
-              
               <p  data={sentence}>
-
-              {sentence.split(" ").map(word => {
-                // console.log(sentencesArray, "Array")
-                // console.log(sentence, "sentence")
-                if (word.startsWith('{')){
-                  word = word.substring(1, word.length-1);
-                  if (index == (sentencesArray.length-1) ){
-                    return(
-                      <button value={word} 
-                          onClick={() => {
-                            setSentencesArray([
-                              ...sentencesArray,
-                              showNext(word)
-                            ]);
-                          }}
-                      >
-                      {word}
-                      </button>
-                    )
-                  }else{
+                {sentence.split(" ").map(word => {
+                  if (word.startsWith('{')){
+                    word = word.substring(1, word.length-1);
+                    if (index == (sentencesArray.length-1) ){
+                      return(
+                        <button value={word} 
+                            onClick={() => {
+                              setSentencesArray([
+                                ...sentencesArray,
+                                showNext(word)
+                              ]);
+                            }}
+                        >
+                        {word}
+                        </button>
+                      )
+                    }else{
+                      return(
+                        <> {word} </>
+                      )
+                    }
+                  } else{
                     return(
                       <> {word} </>
                     )
                   }
-    
-                } else{
-                  return(
-                    <> {word} </>
-                  )
-                }
-                 })}
+                })}
               </p>
-        
-             
-
             )} 
-          </div>
+          <br/>
+          <button id="restart-button" onClick={restart} hidden>Restart</button>
+          </div> 
+
           <div id="illustration">
             <img src={place.image}/>
           </div>
+
           <audio 
+       
             ref={audioRef}
             src = {soundPlaying}
           />
-        <button id="restart-button" onClick={restart} hidden>Restart</button>
+
+          
                  
-       
-          </div>
+        </div>
 
-
-        </main>
-      </div>
-
-  )
-
+      </main>
+    </div>
+  ) //end of return
 
 }
 

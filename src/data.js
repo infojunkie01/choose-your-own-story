@@ -10,7 +10,7 @@ export const data = [
                 trigger: 'You',
                 text: 'You get up while the birds are still singing.',
                 image: './images/wake-on-time.gif',
-                sound:  './audio/concede.mp3',
+                sound:  './audio/bird.mp3',
             },
             {   layer: 1,
                 trigger: 'the',
