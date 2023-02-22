@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 import homeImage from './images/intro.png'
 import './App.css';
@@ -11,12 +11,13 @@ export default function App() {
     data[0].text
   ]
 
-  const [sentence, setSentence] = useState('');
+
   const [sentencesArray, setSentencesArray] = useState(sentences);
 
   const [place, setPlace] = useState(data[0])
 
-  const audioElement = useRef(null)
+  const [soundPlaying, setSoundPlaying] = useState(null)
+  const audioRef = useRef(null)
 
   function startStory(sound) {
     console.log("place", sound)
@@ -64,18 +65,16 @@ export default function App() {
     const restart = document.getElementById('restart-button');
     restart.hidden = true;
     setPlace(data[0])
-    setSentence('')
     setSentencesArray(sentences)
     const intro = document.getElementById('intro');
     const story = document.getElementById('story');
     intro.hidden = false;
     story.hidden = true;
     audioRef.current.pause();
-    audioElement = null
+
   }
 
-  const [soundPlaying, setSoundPlaying] = useState(null)
-  const audioRef = useRef(null)
+
 
   function playSound(sound) {
     audioRef.current.pause() //stop whatever's playing
@@ -95,7 +94,7 @@ export default function App() {
         <h1>When will you wake up?</h1>
 
         <div id="intro">
-          <img id="intro-illustration" src={homeImage}/>
+          <img id="intro-illustration" src={homeImage} alt='background illustration'/>
           <p>Do you wake on the first alarm or hit 'snooze' to sleep in?</p>
           <p>Click the buttons to see how the morning unfolds.</p>
           <br/>
@@ -141,7 +140,7 @@ export default function App() {
           </div> 
 
           <div id="illustration">
-            <img src={place.image}/>
+            <img src={place.image} alt='background illustration'/>
           </div>
 
           <audio 
