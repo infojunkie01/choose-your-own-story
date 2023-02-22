@@ -19,6 +19,9 @@ export default function App() {
   const [soundPlaying, setSoundPlaying] = useState(null)
   const audioRef = useRef(null)
 
+  const [imageShowing, setImageShowing] = useState(homeImage)
+  const imageRef = useRef(homeImage)
+
   function startStory(sound) {
     console.log("place", sound)
     playSound(sound)
@@ -27,12 +30,13 @@ export default function App() {
     const story = document.getElementById('story');
     intro.hidden = true;
     story.hidden = false;
+    setImageShowing(homeImage)
     
   }
 
 
   function showNext(trigger) {
-  
+    setImageShowing(homeImage)
     console.log(trigger, place)
    
     // look in children of place, find where triger mattches
@@ -71,7 +75,7 @@ export default function App() {
     intro.hidden = false;
     story.hidden = true;
     audioRef.current.pause();
-
+    setImageShowing(homeImage)
   }
 
 
@@ -94,7 +98,7 @@ export default function App() {
         <h1>When will you wake up?</h1>
 
         <div id="intro">
-          <img id="intro-illustration" src={homeImage} alt='background illustration'/>
+          <img id="intro-illustration" src={imageShowing} alt='background illustration'/>
           <p>Do you wake on the first alarm or hit 'snooze' to sleep in?</p>
           <p>Click the buttons to see how the morning unfolds.</p>
           <br/>
@@ -140,7 +144,7 @@ export default function App() {
           </div> 
 
           <div id="illustration">
-            <img src={place.image} alt='background illustration'/>
+            <img src={imageShowing} alt='background illustration'/>
           </div>
 
           <audio 
