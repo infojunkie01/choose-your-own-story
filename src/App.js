@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import homeImage from './images/intro.png'
 import './App.css';
 import { data } from "./data"
 
@@ -94,7 +95,7 @@ export default function App() {
         <h1>When will you wake up?</h1>
 
         <div id="intro">
-          <img id="intro-illustration" src="http://infojunkie01.github.io/when-will-you-wake-up/images/intro.png"/>
+          <img id="intro-illustration" src={homeImage}/>
           <p>Do you wake on the first alarm or hit 'snooze' to sleep in?</p>
           <p>Click the buttons to see how the morning unfolds.</p>
           <br/>

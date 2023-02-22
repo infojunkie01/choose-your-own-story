@@ -2,7 +2,7 @@ export const data = [
     {
         layer: 0,
         text: `{You} wake to {the} alarm beeping.`,
-        image: 'http://infojunkie01.github.io/when-will-you-wake-upimages/alarm.gif',
+        image: 'http://infojunkie01.github.io/when-will-you-wake-up/images/alarm.gif',
         sound:  './audio/alarm.mp3',
         children: [
             {
