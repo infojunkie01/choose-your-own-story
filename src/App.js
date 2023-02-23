@@ -73,12 +73,12 @@ export default function App() {
     audioRef.current.pause();
   }
 
+  // Stops sound from playing when you are out of the window
   document.addEventListener("visibilitychange", event => {
     if (document.visibilityState === "visible") {
-      console.log("tab is active")
+      audioRef.current.play()
     } else {
       audioRef.current.pause()
-      console.log("tab is inactive")
     }
   })
 
