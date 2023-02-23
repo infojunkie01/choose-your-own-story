@@ -116,14 +116,15 @@ main {
   color: black;
 }
 
+/* Media queries for portrait */
 @media only screen and (max-width: 320px) and (orientation: portrait) {
   h1{
     font-size: 1.2em;
     margin-top: 8px;
   }
   #intro-illustration, #illustration img{
-    margin-bottom: -110px; 
-    min-width: 700px;
+    margin-bottom: -115px; 
+    min-width: 600px;
   }
 }
 
@@ -133,8 +134,8 @@ main {
     margin-top: 8px;
   }
   #intro-illustration, #illustration img{
-    margin-bottom: -150px; 
-    min-width: 1000px;
+    margin-bottom: -145px; 
+    min-width: 900px;
   }
 }
 
@@ -170,7 +171,7 @@ main {
     margin-top: 8px;
   }
   #intro-illustration, #illustration img{
-    margin-bottom: -100px; 
+    margin-bottom: -130px; 
     min-width: 600px;
   }
 }
@@ -181,8 +182,8 @@ main {
     margin-top: 8px;
   }
   #intro-illustration, #illustration img{
-    margin-bottom: -135px; 
-    min-width: 900px;
+    margin-bottom: -140px; 
+    min-width: 700px;
   }
 }
 

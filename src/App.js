@@ -73,6 +73,15 @@ export default function App() {
     audioRef.current.pause();
   }
 
+  document.addEventListener("visibilitychange", event => {
+    if (document.visibilityState === "visible") {
+      console.log("tab is active")
+    } else {
+      audioRef.current.pause()
+      console.log("tab is inactive")
+    }
+  })
+
   return (
     <div className="App">
 
