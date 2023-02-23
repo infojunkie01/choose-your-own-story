@@ -123,7 +123,7 @@ export default function App() {
                 })}
               </p>
             )} 
-          <br/>
+       
           <button id="restart-button" onClick={restart} hidden>Restart</button>
           </div> 
 

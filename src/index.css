@@ -51,13 +51,13 @@ main {
 }
 
 #start-button{
-  font-size: large;
   background-color: #fdf2da;
   border: 1px solid #797979;
   border-radius: 5px;
-  padding: 6px 12px;
+  padding: 5px 7px;
 }
 #restart-button{
+  margin-top: 1em;
   background-color: #fdf2da;
   border: 1px solid #797979;
   border-radius: 5px;
@@ -116,38 +116,94 @@ main {
   color: black;
 }
 
-@media (max-width: 600px) and (max-height: 700px) { 
+@media only screen and (max-width: 320px) and (orientation: portrait) {
   h1{
-    font-size: 1.5em;
-    margin-top: 0;
+    font-size: 1.2em;
+    margin-top: 8px;
   }
   #intro-illustration, #illustration img{
-    margin-bottom: -32%; 
-    min-width: 1000px;
-  }
-}
-@media (min-width: 600px) and (max-width: 800px) and (min-height: 700px ) and (max-height: 800px) { 
-  #intro-illustration, #illustration img{
-    margin-bottom: -30%;
-    min-width: 1300px;
-  }
-}
-@media (max-width: 800px) and (min-height: 800px) { 
-  #intro-illustration, #illustration img{
-    margin-bottom: -25%;
-    min-width: 1400px;
+    margin-bottom: -110px; 
+    min-width: 700px;
   }
 }
 
-@media (min-width: 800px) and (min-height: 700px) and (max-height: 900px) { 
+@media only screen and (min-width: 320px) and (max-width: 500px) and (orientation: portrait) {
+  h1{
+    font-size: 1.2em;
+    margin-top: 8px;
+  }
   #intro-illustration, #illustration img{
-    margin-bottom: -14%;
+    margin-bottom: -150px; 
+    min-width: 1000px;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 700px) and (orientation: portrait) {
+  h1{
+    font-size: 1.5em;
+    margin-top: 15px;
+  }
+  #intro-illustration, #illustration img{
+    margin-bottom: -150px; 
+    min-width: 1200px;
+  }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1000px) and (orientation: portrait) {
+  #intro-illustration, #illustration img{
+    margin-bottom: -150px; 
     min-width: 1500px;
   }
 }
-@media (min-width: 800px) and (min-height: 900px) and (max-height: 1200px) { 
+
+@media only screen and (min-width: 1000px) and (orientation: portrait) {
   #intro-illustration, #illustration img{
-    margin-bottom: -10%;
+    margin-bottom: -100px; 
+    min-width: 2000px;
+  }
+}
+
+/* For landscape sizes */
+@media only screen and (max-width: 480px) and (orientation: landscape) {
+  h1{
+    font-size: 1.2em;
+    margin-top: 8px;
+  }
+  #intro-illustration, #illustration img{
+    margin-bottom: -100px; 
+    min-width: 600px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 700px) and (orientation: landscape) {
+  h1{
+    font-size: 1.2em;
+    margin-top: 8px;
+  }
+  #intro-illustration, #illustration img{
+    margin-bottom: -135px; 
+    min-width: 900px;
+  }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1000px) and (orientation: landscape) {
+  #intro-illustration, #illustration img{
+    margin-bottom: -230px; 
     min-width: 1500px;
   }
 }
+
+@media only screen and (min-width: 1000px) and (max-width: 1400px) and (orientation: landscape) {
+  #intro-illustration, #illustration img{
+    margin-bottom: -225px; 
+    min-width: 1500px;
+  }
+}
+
+@media only screen and (min-width: 1400px)  and (orientation: landscape) {
+  #intro-illustration, #illustration img{
+    margin-bottom: -225px; 
+    min-width: 1700px;
+  }
+}
+
