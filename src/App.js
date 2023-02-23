@@ -17,34 +17,35 @@ export default function App() {
   const [soundPlaying] = useState(null)
   const audioRef = useRef(null)
 
+  // This function is called when user hits 'begin'
   function startStory(sound) {
-    console.log("place", sound)
     playSound(sound)
     const intro = document.getElementById('intro');
     const story = document.getElementById('story');
     intro.hidden = true;
     story.hidden = false;
-    //setImageShowing(homeImage)
-    
   }
 
+  // Function to play next sound, called in showNext function
+  function playSound(sound) {
+    audioRef.current.pause() //stop whatever's playing
+    audioRef.current.src = sound //set new source
+    audioRef.current.load()
+    audioRef.current.play()
+    }
 
+  // When user hits buttons once story begins, this shows the next line, image and audio
   function showNext(trigger) {
-    console.log(trigger, place)
+    //console.log(trigger, place)
    
-    // look in children of place, find where triger mattches
+        // look in children of place, find where triger mattches
         for (const child of place.children){
         
           if (child.trigger === trigger){
             playSound(child.sound)
-            console.log(place, "PLACE")
-            //console.log("place", place.children[place.children.indexOf(child)])
             var newPlace = place.children[place.children.indexOf(child)]
             setPlace(newPlace) //set to index
-            console.log("howdy", newPlace)
-            if (newPlace.hasOwnProperty("children") === false){
-
-              console.log("hi")
+            if (newPlace.hasOwnProperty("children") === false){ // if end of story is reached show retart button
               const restart = document.getElementById('restart-button');
               restart.hidden = false;
               return child.text
@@ -56,6 +57,7 @@ export default function App() {
         }
     }
 
+  // restarts story
   function restart(){
     const restart = document.getElementById('restart-button');
     restart.hidden = true;
@@ -68,19 +70,8 @@ export default function App() {
     audioRef.current.pause();
   }
 
-
-
-  function playSound(sound) {
-    audioRef.current.pause() //stop whatever's playing
-    audioRef.current.src = sound //set new source
-    audioRef.current.load()
-    audioRef.current.play()
-    }
-
-
-
   return (
-    <div id="app-container" className="App">
+    <div className="App">
 
       <header className=""></header>
 
@@ -145,6 +136,8 @@ export default function App() {
         </div>
 
       </main>
+
+      <p id="attribution">Created by <a href="https://github.com/infojunkie01" target="_blank">@infojunkie01</a></p>
      
     </div>
   ) //end of return
