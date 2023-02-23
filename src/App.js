@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 
-import homeImage from './images/intro.png'
 import './App.css';
 import { data } from "./data"
 
@@ -11,21 +10,16 @@ export default function App() {
     data[0].text
   ]
 
-
   const [sentencesArray, setSentencesArray] = useState(sentences);
 
   const [place, setPlace] = useState(data[0])
 
-  const [soundPlaying, setSoundPlaying] = useState(null)
+  const [soundPlaying] = useState(null)
   const audioRef = useRef(null)
-
-  //const [imageShowing, setImageShowing] = useState(homeImage)
-  //const imageRef = useRef(homeImage)
 
   function startStory(sound) {
     console.log("place", sound)
     playSound(sound)
-    console.log("soundPlaying", soundPlaying)
     const intro = document.getElementById('intro');
     const story = document.getElementById('story');
     intro.hidden = true;
@@ -57,8 +51,6 @@ export default function App() {
             }else{
               return child.text
             }
-
-            
             
           }
         }
@@ -74,7 +66,6 @@ export default function App() {
     intro.hidden = false;
     story.hidden = true;
     audioRef.current.pause();
-    //setImageShowing(homeImage)
   }
 
 
@@ -89,7 +80,7 @@ export default function App() {
 
 
   return (
-    <div className="App">
+    <div id="app-container" className="App">
 
       <header className=""></header>
 
@@ -97,7 +88,7 @@ export default function App() {
         <h1>When will you wake up?</h1>
 
         <div id="intro">
-          <img id="intro-illustration" src={homeImage} alt='background illustration'/>
+          <img id="intro-illustration" src="https://github.com/infojunkie01/when-will-you-wake-up/blob/main/public/images/intro.png?raw=true" alt='background illustration'/>
           <p>Do you wake on the first alarm or hit 'snooze' to sleep in?</p>
           <p>Click the buttons to see how the morning unfolds.</p>
           <br/>
@@ -148,12 +139,13 @@ export default function App() {
 
           <audio 
             ref={audioRef}
-            src = {soundPlaying}
+            src={soundPlaying}
           />  
                  
         </div>
 
       </main>
+     
     </div>
   ) //end of return
 
