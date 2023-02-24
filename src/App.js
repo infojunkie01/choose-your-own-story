@@ -39,9 +39,8 @@ export default function App() {
 
   // When user hits buttons once story begins, this shows the next line, image and audio
   function showNext(trigger) {
-    //console.log(trigger, place)
-   
-        // look in children of place, find where triger mattches
+
+        // look in children of place, find where triger matches
         for (const child of place.children){
         
           if (child.trigger === trigger){
